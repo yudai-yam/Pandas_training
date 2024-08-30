@@ -76,25 +76,51 @@ def series_practice():
     logger.critical('this is from critical')
     logger.warning(series)
 
-def dataframe_practice():
-    data = {
-        "calories": [420, 380, 390],
-        "duration": [50, 40, 45]
-    }
-    df = pd.DataFrame(data, index=['first_row', 'second_row', 'third_row'])
+def dataframe_practice(df):
 
     temp = df.loc['first_row']
-
-    print(temp)
+    # print(temp)
 
     # when using [], it returns a dataframe
     temp_2 = df.loc[['first_row', 'second_row']]
 
-    print(temp_2)
+    # print(temp_2)
 
+    print(df)
+    new_index = ['1', '2', '3']
+    print(df.reindex(new_index)) 
+    another_index = ['third_row', 'first_row', 'second_row']
+    print(df.reindex(another_index))
+
+    # get one column
+    # print(df['calories'])
+    # print(df.loc['calories'])
+
+
+def mod_df(df):
+
+    # add a column
+    df['new_column'] = [5,6,7]
+
+    # add another column in another way
+    df.insert(2, 'another_column', [8,9,8])
+    
+    print(df)
+
+    # delete column
+    df.drop('new_column', axis=1, inplace=True)
+    print(df)
+
+data = {
+    "calories": [420, 380, 390],
+    "duration": [50, 40, 45]
+}
+df = pd.DataFrame(data, index=['first_row', 'second_row', 'third_row'])
+    
 # series_practice()
 # dataframe_practice()
 # read_csv_practice('sample_data.csv')
 # read_json_practice('generated.json')
 # clean_data('flaw_data.csv')
-little_math('data.csv')
+# little_math('data.csv')
+mod_df(df)
