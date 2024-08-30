@@ -111,6 +111,11 @@ def mod_df(df):
     df.drop('new_column', axis=1, inplace=True)
     print(df)
 
+
+def iteration(df):
+    for index, row in df.iterrows():
+        print(f'the index is {index} and the row is {row}')
+
 data = {
     "calories": [420, 380, 390],
     "duration": [50, 40, 45]
@@ -123,4 +128,5 @@ df = pd.DataFrame(data, index=['first_row', 'second_row', 'third_row'])
 # read_json_practice('generated.json')
 # clean_data('flaw_data.csv')
 # little_math('data.csv')
-mod_df(df)
+# mod_df(df)
+iteration(df)
